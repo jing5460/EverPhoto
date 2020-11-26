@@ -12,8 +12,8 @@ import (
 
 const (
 	_apiEntry   = "https://api.everphoto.cn"
-	_authAPI    = _apiEntry + "/auth"
-	_checkinAPI = _apiEntry + "/users/self/checkin/v2"
+	_apiAuth    = _apiEntry + "/auth"
+	_apiCheckin = _apiEntry + "/users/self/checkin/v2"
 )
 
 var (
@@ -43,7 +43,7 @@ func New(mobile, password string) (*Bot, error) {
 		ghttp.EnableRetry(),
 	)
 
-	resp, err := client.Post(_authAPI, ghttp.WithForm(ghttp.Form{
+	resp, err := client.Post(_apiAuth, ghttp.WithForm(ghttp.Form{
 		"mobile":   mobile,
 		"password": salt(password),
 	}))
@@ -75,7 +75,7 @@ func NewWithToken(token string) *Bot {
 }
 
 func (bot *Bot) Checkin(ctx context.Context) (*model.CheckinResult, error) {
-	resp, err := bot.client.Post(_checkinAPI,
+	resp, err := bot.client.Post(_apiCheckin,
 		ghttp.WithContext(ctx),
 	)
 	if err != nil {

@@ -28,6 +28,11 @@ type (
 		CommonResponse
 		Data *CheckinResult `json:"data"`
 	}
+
+	PushResponse struct {
+		Errno  int    `json:"errno"`
+		Errmsg string `json:"errmsg"`
+	}
 )
 
 const MB = 1 << 20
