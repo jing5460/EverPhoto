@@ -13,10 +13,10 @@ import (
 )
 
 const (
-	EnvMobile   = "EverPhotoMobile"
-	EnvPassword = "EverPhotoPassword"
-	EnvToken    = "EverPhotoToken"
-	EnvSCKey    = "SCKey"
+	EnvEverPhotoMobile   = "EverPhotoMobile"
+	EnvEverPhotoPassword = "EverPhotoPassword"
+	EnvEverPhotoToken    = "EverPhotoToken"
+	EnvServerChanKey     = "ServerChanKey"
 )
 
 var (
@@ -39,19 +39,19 @@ func valueOrDefault(value, def string) string {
 }
 
 func createBot() (bot *client.Bot, err error) {
-	_token = valueOrDefault(_token, os.Getenv(EnvToken))
+	_token = valueOrDefault(_token, os.Getenv(EnvEverPhotoToken))
 	if _token != "" {
 		bot = client.NewWithToken(_token)
 		return
 	}
 
-	_mobile = valueOrDefault(_mobile, os.Getenv(EnvMobile))
-	_password = valueOrDefault(_password, os.Getenv(EnvPassword))
+	_mobile = valueOrDefault(_mobile, os.Getenv(EnvEverPhotoMobile))
+	_password = valueOrDefault(_password, os.Getenv(EnvEverPhotoPassword))
 	bot, err = client.New(_mobile, _password)
 	return
 }
 
-var _scKey = os.Getenv(EnvSCKey)
+var _scKey = os.Getenv(EnvServerChanKey)
 
 func pushMessage(ok bool, desp string) {
 	if _scKey == "" {
@@ -59,8 +59,8 @@ func pushMessage(ok bool, desp string) {
 	}
 
 	const (
-		_textSuccess = "【时光相册】签到成功通知"
-		_textFailure = "【时光相册】签到失败通知"
+		_textSuccess = "时光相册签到成功通知"
+		_textFailure = "时光相册签到失败通知"
 	)
 	var err error
 	if ok {

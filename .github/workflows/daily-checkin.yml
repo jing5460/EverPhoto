@@ -28,4 +28,4 @@ jobs:
           EverPhotoMobile: ${{secrets.EVER_PHOTO_MOBILE}}
           EverPhotoPassword: ${{secrets.EVER_PHOTO_PASSWORD}}
           EverPhotoToken: ${{secrets.EVER_PHOTO_TOKEN}}
-          SCKey: ${{secrets.SC_KEY}}
+          ServerChanKey: ${{secrets.SERVER_CHAN_KEY}}

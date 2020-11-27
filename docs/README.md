@@ -17,7 +17,7 @@
 |  EVER_PHOTO_MOBILE  | 登录手机号，包括国际区号， 如 `+8613800138000` |
 | EVER_PHOTO_PASSWORD |                    登录密码                    |
 |  EVER_PHOTO_TOKEN   |             可选，Bearer令牌             |
-| SC_KEY | 可选，用于 [Server酱](http://sc.ftqq.com) 推送 |
+| SERVER_CHAN_KEY | 可选，[Server酱](http://sc.ftqq.com) 签发的 `SCKEY` ，用于推送通知 |
 
 ![Set Secrets](imgs/secrets.png)
 
